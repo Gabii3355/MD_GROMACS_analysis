@@ -23,8 +23,6 @@ This directory contains a short molecular dynamics workflow for a periodic box o
 - **Electrostatics:** Particle Mesh Ewald
 - **Bond constraints:** LINCS for bonds involving hydrogen
 
-> Methanol was represented with the GROMOS96 43A1 united-atom model, not with the SPC water model.
-
 ## Short workflow
 
 1. The methanol structure, topology and MD parameters were prepared in the `.gro`, `.top`, `.itp` and `.mdp` files.
@@ -122,4 +120,4 @@ The strong first peak represents the first coordination shell of hydroxyl oxygen
 
 ## Main conclusions
 
-The 200 ps simulation preserved liquid methanol with a dynamic hydrogen-bond network and normal diffusive motion. The oxygen–oxygen RDF showed pronounced short-range ordering, while the MSD increased nearly linearly. The density remained within a condensed-liquid range but showed substantial fluctuations, so longer equilibration and production runs would be required for a more precise quantitative comparison with reference data.
+The 200 ps simulation preserved liquid methanol with a dynamic hydrogen-bond network and normal diffusive motion. The oxygen–oxygen RDF showed pronounced short-range ordering, while the MSD increased nearly linearly. The density remained within a condensed-liquid range but showed substantial fluctuations, so longer equilibration and production runs would be required for a more precise quantitative comparison with reference data.range ordering, while the MSD increased nearly linearly. The density remained within a condensed-liquid range but showed substantial fluctuations, so longer equilibration and production runs would be required for a more precise quantitative comparison with reference data.
