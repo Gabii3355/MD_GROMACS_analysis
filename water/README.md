@@ -18,7 +18,7 @@ This directory contains a short molecular dynamics workflow for a periodic box o
 - **Electrostatics:** Particle Mesh Ewald
 - **Bond constraints:** LINCS for bonds involving hydrogen
 
-## Short workflow
+## Workflow
 
 1. The input structure, topology and MD parameters were prepared in `conf.gro`, `topol.top` and `grompp.mdp`.
 2. The run input file was generated with `gmx grompp`.
@@ -30,15 +30,7 @@ This directory contains a short molecular dynamics workflow for a periodic box o
    - mean square displacement,
    - diffusion coefficient,
    - density.
-6. GROMACS `.xvg` output files were converted into PNG plots using an R script.
-
-Example execution:
-
-```bash
-gmx grompp -f grompp.mdp -c conf.gro -p topol.top -o water.tpr
-gmx mdrun -s water.tpr -deffnm water -v
-Rscript plot_all_xvg.R
-```
+6. GROMACS `.xvg` output files were converted into PNG plots using an R script
 
 ## Results
 
@@ -103,5 +95,5 @@ This peak represents the first coordination shell of neighboring water molecules
 A separate System–System RDF was also calculated. Its sharp peaks near approximately 0.10 and 0.16 nm mainly arise from intramolecular O–H and H–H distances, so the oxygen–oxygen RDF was used as the main structural result.
 
 ## Main conclusions
-
+The simulation preserved a stable water in a liquid system over 200 ps. The density remained close to the liquid range, the hydrogen-bond network was maintained, the oxygen–oxygen RDF showed the expected short-range organization, and the nearly linear MSD confirmed diffusive molecular motion.
 The simulation preserved a stable liquid-water system over 200 ps. The density remained close to the liquid range, the hydrogen-bond network was maintained, the oxygen–oxygen RDF showed the expected short-range organization, and the nearly linear MSD confirmed diffusive molecular motion.
