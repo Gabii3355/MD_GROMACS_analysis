@@ -1,0 +1,12 @@
+; Pure methanol system: 216 molecules
+; Force field: GROMOS96 43A1
+
+#include "gromos43a1.ff/forcefield.itp"
+#include "methanol.itp"
+
+[ system ]
+Pure Methanol - 216 molecules
+
+[ molecules ]
+; Compound    #mols
+Methanol       216

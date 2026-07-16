@@ -1,0 +1,71 @@
+# This file was created Thu Jul 16 05:18:23 2026
+# Created by:
+#               :-) GROMACS - gmx msd, 2020.1-Ubuntu-2020.1-1 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/gabi/Documents/MD_GROMACS/methanol
+# Command line:
+#   gmx msd -n index_oxygen.ndx -f traj_comp.xtc -o msd.xvg
+# gmx msd is part of G R O M A C S:
+#
+# GROtesk MACabre and Sinister
+#
+@    title "Mean Square Displacement"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "MSD (nm\S2\N)"
+@TYPE xy
+# MSD gathered over 200 ps with 11 restarts
+# Diffusion constants fitted from time 20 to 180 ps
+# D[    Oxygen] = 2.2089 (+/- 0.3325) (1e-5 cm^2/s)
+         0           0
+         4   0.0845744
+         8    0.150959
+        12     0.20673
+        16    0.275604
+        20    0.338456
+        24    0.383592
+        28    0.442516
+        32    0.506945
+        36    0.563714
+        40    0.619986
+        44    0.662018
+        48     0.71929
+        52    0.792888
+        56    0.843429
+        60    0.885811
+        64    0.918009
+        68    0.976323
+        72     1.04708
+        76     1.07989
+        80     1.12805
+        84     1.16324
+        88     1.18896
+        92     1.27488
+        96      1.3112
+       100     1.36278
+       104     1.39872
+       108     1.41322
+       112     1.51151
+       116     1.55494
+       120      1.6037
+       124     1.64969
+       128      1.6729
+       132     1.81174
+       136     1.83916
+       140     1.86792
+       144      1.9577
+       148      1.9987
+       152     2.10932
+       156     2.12024
+       160     2.16344
+       164     2.30146
+       168     2.32367
+       172     2.41657
+       176     2.45945
+       180     2.55844
+       184     2.78678
+       188     2.59603
+       192     2.80561
+       196     2.95766
+       200     2.81708
