@@ -10,6 +10,16 @@ characteristic alpha-helical region in aqueous solution and to analyse its
 structural stability, compactness, backbone conformations and electrostatic
 contacts.
 
+## Software and methods
+
+The workflow used:
+
+- GROMACS for system preparation, energy minimization, equilibration,
+  production molecular dynamics and trajectory analysis,
+- VMD for trajectory inspection, secondary-structure analysis and
+  salt-bridge analysis,
+- R for processing GROMACS XVG files and generating publication-style plots.
+
 ## System preparation
 
 The initial S-peptide structure, corresponding to residues 1–20 of
@@ -17,7 +27,7 @@ ribonuclease A, was prepared using the AMBER03 force field and the TIP3P
 water model.
 
 Hydrogen atoms and the molecular topology were generated with `gmx pdb2gmx`.
-The peptide was placed in a periodic simulation box with a minimum
+The peptide was placed in a periodic simulation box with a nominal minimum
 solute-to-box distance of 0.5 nm and solvated with explicit water.
 
 The final system contained:
@@ -26,6 +36,9 @@ The final system contained:
 - 295 peptide atoms,
 - 961 TIP3P water molecules,
 - 3178 atoms in total.
+
+The prepared peptide had a total charge of 0.000 e, so neutralizing
+counterions were not required. No additional salt was added to the system.
 
 A position-restraint topology was generated automatically during topology
 preparation.
@@ -39,22 +52,22 @@ preparation.
 5. Generation of standard GROMACS index groups.
 6. Steepest-descent energy minimization.
 7. A 10 ps position-restrained NVT equilibration at 300 K.
-8. A 300 ps unrestrained NPT molecular dynamics simulation at 300 K and
-   1 bar.
+8. A 300 ps unrestrained NPT molecular dynamics simulation at 300 K and a
+   reference pressure of 1 bar.
 9. Correction of periodic boundary conditions and centering of the peptide.
 10. Structural and energetic trajectory analysis.
 
 ## Energy minimization
 
 Energy minimization was performed using the steepest-descent algorithm with
-a maximum-force convergence criterion of 2000 kJ mol-1 nm-1.
+a maximum-force convergence criterion of 2000 kJ mol⁻¹ nm⁻¹.
 
 The minimization converged after 116 steps.
 
 Final values:
 
-- potential energy: approximately -40,643 kJ/mol,
-- maximum force: approximately 1232 kJ mol-1 nm-1.
+- potential energy: approximately −40,643 kJ/mol,
+- maximum force: approximately 1232 kJ mol⁻¹ nm⁻¹.
 
 The maximum force was below the specified convergence threshold, indicating
 successful removal of the strongest steric clashes and unfavourable initial
@@ -70,7 +83,7 @@ around the peptide.
 
 The potential energy decreased during the first approximately 2 ps and then
 fluctuated around a relatively stable mean value of approximately
--41,200 kJ/mol, suggesting relaxation of the solvated system.
+−41,200 kJ/mol, suggesting relaxation of the solvated system.
 
 ## Production molecular dynamics
 
@@ -82,6 +95,7 @@ using:
 - a 2 fs integration time step,
 - a temperature of 300 K,
 - a reference pressure of 1 bar,
+- the Berendsen barostat,
 - Particle Mesh Ewald electrostatics,
 - 1.0 nm electrostatic and van der Waals cutoffs,
 - LINCS constraints on bonds involving hydrogen atoms.
@@ -90,8 +104,9 @@ using:
 
 The following analyses were performed:
 
-- potential energy analysis,
-- C-alpha RMSD,
+- potential-energy analysis,
+- temperature, pressure, density and volume analysis,
+- Cα RMSD,
 - radius of gyration,
 - Ramachandran analysis,
 - secondary-structure analysis using VMD Timeline,
@@ -100,17 +115,18 @@ The following analyses were performed:
 
 ## Results
 
-### C-alpha RMSD
+### Cα RMSD
 
-The C-alpha RMSD increased during the first part of the simulation,
-indicating conformational relaxation relative to the starting structure.
+The Cα RMSD increased during the first part of the simulation, indicating
+conformational relaxation relative to the starting structure.
 
 The RMSD reached a maximum of approximately 0.46 nm around 160 ps. During
 the final 50 ps, it fluctuated mainly between approximately 0.24 and
 0.32 nm, with a final value of approximately 0.31 nm.
 
-The average RMSD over the complete trajectory was approximately
-0.30 +/- 0.09 nm.
+The average RMSD over the complete trajectory was approximately:
+
+- RMSD = 0.30 ± 0.09 nm.
 
 These results indicate substantial conformational adjustment followed by
 partial stabilization. However, a clear long-term RMSD plateau was not
@@ -123,7 +139,7 @@ approximately 0.95–1.05 nm.
 
 The average radius of gyration was:
 
-- Rg = 1.00 +/- 0.02 nm.
+- Rg = 1.00 ± 0.02 nm.
 
 The relatively stable Rg indicates that the peptide remained compact and did
 not undergo global unfolding or structural collapse.
@@ -135,8 +151,7 @@ peptide.
 ### Ramachandran analysis
 
 The Ramachandran plot showed a dominant population in the right-handed
-alpha-helical region, centred approximately around phi = -60 degrees and
-psi = -40 degrees.
+alpha-helical region, centred approximately around φ = −60° and ψ = −40°.
 
 A second population was observed in the extended or beta-like region and
 was mainly associated with flexible non-helical residues.
@@ -187,7 +202,7 @@ The average simulation-box volume was:
 
 - **Volume: 31.56 nm³**
 
-The volume exhibited moderate fluctuations expected for an NPT simulation,
+The volume exhibited moderate fluctuations expected for an NPT simulation
 but remained within a relatively narrow range. No progressive expansion or
 collapse of the simulation box was detected.
 
@@ -210,7 +225,7 @@ expansion.
 Because the simulation was only 300 ps long, the calculated mean pressure
 should be interpreted cautiously.
 
-### Overall assessment
+### Overall thermodynamic assessment
 
 The potential energy, temperature, density and volume remained stable
 throughout the production trajectory. Together, these results indicate that
@@ -219,8 +234,9 @@ intended thermodynamic conditions over the analysed timescale.
 
 However, the short simulation duration and large pressure fluctuations mean
 that the trajectory should be interpreted as an initial short-timescale
-molecular dynamics analysis rather than a fully converged thermodynamic
+molecular dynamics analysis rather than fully converged thermodynamic
 sampling.
+
 ### Secondary structure
 
 VMD Timeline analysis showed that the central region of the S-peptide,
@@ -254,7 +270,7 @@ ribonuclease S-peptide remained compact and retained a substantial part of
 its central alpha-helical structure in explicit water.
 
 The peptide underwent noticeable conformational relaxation, as indicated by
-the C-alpha RMSD, but did not display global unfolding, as shown by the
+the Cα RMSD, but did not display global unfolding, as shown by the
 relatively stable radius of gyration.
 
 The central helical region was more stable than the terminal residues.
@@ -315,9 +331,9 @@ Future improvements could include:
 
 5. **Increasing the solvent buffer around the peptide**
 
-   The current system was prepared with a minimum peptide-to-box distance of
-   0.5 nm. Increasing this distance to approximately 1.0 nm would place more
-   solvent between the peptide and its periodic images.
+   The current system was prepared with a nominal minimum peptide-to-box
+   distance of 0.5 nm. Increasing this distance to approximately 1.0 nm would
+   place more solvent between the peptide and its periodic images.
 
    A larger solvent buffer would reduce the risk of artificial interactions
    between the peptide and its own periodic copies, especially when the
@@ -346,14 +362,17 @@ Future improvements could include:
    This would allow the Glu2–Arg10 and Glu2–Lys7 interactions to be described
    quantitatively rather than only visually.
 
-8. **Adding ions when required**
+8. **Including an explicit salt concentration**
 
-   The total charge of the peptide system should be checked. If the system is
-   not neutral, counterions could be added to remove the net charge.
+   The prepared peptide had a total charge of 0.000 e, so neutralizing
+   counterions were not required. However, no additional salt was included
+   in the current system.
 
-   Adding an appropriate salt concentration would also provide a more realistic
-   ionic environment and could influence electrostatic interactions, including
-   the stability of the Glu2–Arg10 salt bridge.
+   Adding a defined ionic strength, for example using an appropriate NaCl
+   concentration, could provide a more realistic aqueous environment.
+   The presence of ions could also influence electrostatic interactions,
+   including the stability and occupancy of the Glu2–Arg10 and Glu2–Lys7
+   contacts.
 
 9. **Comparing force fields and water models**
 
