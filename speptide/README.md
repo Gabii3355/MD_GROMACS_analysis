@@ -22,7 +22,7 @@ The workflow used:
 
 ## System preparation
 
-The initial S-peptide structure, corresponding to residues 1–20 of
+The initial S-peptide structure, corresponding to residues 1-20 of
 ribonuclease A, was prepared using the AMBER03 force field and the TIP3P
 water model.
 
@@ -66,7 +66,7 @@ The minimization converged after 116 steps.
 
 Final values:
 
-- potential energy: approximately −40,643 kJ/mol,
+- potential energy: approximately -40,643 kJ/mol,
 - maximum force: approximately 1232 kJ mol⁻¹ nm⁻¹.
 
 The maximum force was below the specified convergence threshold, indicating
@@ -75,7 +75,7 @@ contacts.
 
 ## Position-restrained equilibration
 
-A 10 ps position-restrained NVT simulation was performed at 300 K.
+A 10 ps position-restrained (pr) NVT simulation was performed at 300 K.
 
 During this stage, the peptide heavy atoms were maintained close to their
 reference positions, while the water molecules were allowed to reorganize
@@ -83,7 +83,7 @@ around the peptide.
 
 The potential energy decreased during the first approximately 2 ps and then
 fluctuated around a relatively stable mean value of approximately
-−41,200 kJ/mol, suggesting relaxation of the solvated system.
+-41,200 kJ/mol, suggesting relaxation of the solvated system.
 
 ## Production molecular dynamics
 
@@ -116,7 +116,7 @@ The following analyses were performed:
 ## Results
 
 ### Cα RMSD
-
+![C-alpha RMSD of the S-peptide during the production MD simulation](04_analysis/plots/rmsd.png) 
 The Cα RMSD increased during the first part of the simulation, indicating
 conformational relaxation relative to the starting structure.
 
@@ -133,7 +133,7 @@ partial stabilization. However, a clear long-term RMSD plateau was not
 reached during the 300 ps trajectory.
 
 ### Radius of gyration
-
+![Radius of gyration of the S-peptide during the production MD simulation](04_analysis/plots/gyrate.png)
 The radius of gyration remained within a relatively narrow range of
 approximately 0.95–1.05 nm.
 
@@ -149,6 +149,7 @@ conformational rearrangement rather than large-scale expansion of the
 peptide.
 
 ### Ramachandran analysis
+![Ramachandran plot calculated from the production MD trajectory](04_analysis/plots/rama.png)
 
 The Ramachandran plot showed a dominant population in the right-handed
 alpha-helical region, centred approximately around φ = −60° and ψ = −40°.
