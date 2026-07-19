@@ -1,0 +1,29 @@
+; Energy minimization of solvated S-peptide
+; Force field: AMBER03
+; Water model: TIP3P
+
+integrator               = steep
+emtol                    = 2000.0
+emstep                   = 0.01
+nsteps                   = 1000
+
+nstlog                   = 10
+nstenergy                = 10
+
+cutoff-scheme            = Verlet
+nstlist                  = 10
+rlist                    = 1.0
+
+coulombtype              = PME
+rcoulomb                 = 1.0
+
+vdwtype                  = Cut-off
+rvdw                     = 1.0
+DispCorr                 = EnerPres
+
+pbc                      = xyz
+
+constraints              = none
+tcoupl                   = no
+pcoupl                   = no
+gen_vel                  = no

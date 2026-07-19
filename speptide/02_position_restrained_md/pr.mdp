@@ -1,0 +1,42 @@
+; Position-restrained NVT equilibration of solvated S-peptide
+; Force field: AMBER03
+; Water model: TIP3P
+
+define                   = -DPOSRES
+
+integrator               = md
+dt                       = 0.002
+nsteps                   = 5000      ; 10 ps
+
+continuation             = no
+
+nstxout-compressed       = 100
+nstenergy                = 100
+nstlog                   = 100
+
+constraint-algorithm     = lincs
+constraints              = h-bonds
+
+cutoff-scheme            = Verlet
+nstlist                  = 10
+rlist                    = 1.0
+
+coulombtype              = PME
+rcoulomb                 = 1.0
+
+vdwtype                  = Cut-off
+rvdw                     = 1.0
+DispCorr                 = EnerPres
+
+tcoupl                   = Berendsen
+tc-grps                  = Protein SOL
+tau_t                    = 0.1 0.1
+ref_t                    = 300 300
+
+pcoupl                   = no
+
+pbc                      = xyz
+
+gen_vel                  = yes
+gen_temp                 = 300
+gen_seed                 = -1
